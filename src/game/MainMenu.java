@@ -4,11 +4,13 @@ import java.awt.*;
 
 public class MainMenu extends Menu implements OnScreen
 {
-    
+    private StringFormatting title;
 
     public MainMenu(GameState state, int x, int y, int height, int width)
     {
         super(state, x, y, height, width);
+        title = new StringFormatting(x, y, width, height, "Redo");
+
     }
 
     public void update()
@@ -20,17 +22,18 @@ public class MainMenu extends Menu implements OnScreen
           (state.getMouseLocation().x <= (this.x + getWidth()) && state.getMouseLocation().y <= (this.y + getHeight())))
         {
             state.changeIsGameStarted(false);
-            state.addGameObject(new StartMenu(state, x + 100, y + 100, height, width));
+            state.addGameObject(new StartMenu(state, x, y + 200, height, width));
             state.removeGameObject(this);
         }
     }
 
     public void draw(Graphics g)
     {
+        title.changeOffset(title.getOffset(g));
         g.setColor(Color.BLACK);
-        g.fillRect(x, y, height, width);
+        g.fillRect(x, y, width, height);
         g.setColor(Color.WHITE);
-        g.drawString("Redo", x + height / 2, y + width / 2);
+        g.drawString(title.getContents(), title.centerString().x, title.centerString().y);
     }
 
     /**
@@ -43,12 +46,12 @@ public class MainMenu extends Menu implements OnScreen
 
     public int getHeight()
     {
-        return this.width;
+        return this.height;
     }
 
     public int getWidth()
     {
-        return this.height;
+        return this.width;
     }
 
     public void setLocation(Point location)
