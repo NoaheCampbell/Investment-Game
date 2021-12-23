@@ -10,7 +10,7 @@ abstract public class Account implements OnScreen
 
     public Account()
     {
-        this.balance = balance;
+
     }
 
     public double getBalance()

@@ -31,7 +31,7 @@ public class CompanyCreator
         this.amountReturned = amountReturned;
         this.income = income;
         this.spending = spending;
-        this.name = name;
+        this.setName(name);
     }
 
     public String generateRandomName()
@@ -94,6 +94,14 @@ public class CompanyCreator
     public void setSpending(int newSpending)
     {
         spending = newSpending;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void generateRandomSuccessChance()
