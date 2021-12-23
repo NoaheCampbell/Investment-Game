@@ -6,7 +6,7 @@ public class MainMenu extends Menu implements OnScreen
 {
     
 
-    public MainMenu(GameState state, int x, int y, int width, int height)
+    public MainMenu(GameState state, int x, int y, int height, int width)
     {
         super(state, x, y, height, width);
     }
@@ -20,7 +20,7 @@ public class MainMenu extends Menu implements OnScreen
           (state.getMouseLocation().x <= (this.x + getWidth()) && state.getMouseLocation().y <= (this.y + getHeight())))
         {
             state.changeIsGameStarted(false);
-            state.addGameObject(new StartMenu(state, x + 100, y + 100, width, height));
+            state.addGameObject(new StartMenu(state, x + 100, y + 100, height, width));
             state.removeGameObject(this);
         }
     }

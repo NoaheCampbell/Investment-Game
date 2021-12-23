@@ -20,7 +20,7 @@ public class StartMenu extends Menu implements OnScreen
                 (state.getMouseLocation().x <= (this.x + getWidth()) && state.getMouseLocation().y <= (this.y + getHeight())))
         {
             state.changeIsGameStarted(true);
-            state.addGameObject(new MainMenu(state, x - 100, y - 100, width, height));
+            state.addGameObject(new MainMenu(state, x - 100, y - 100, height, width));
             state.removeGameObject(this);
         }
     }
