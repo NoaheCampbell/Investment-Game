@@ -21,7 +21,7 @@ public class GameControl implements Runnable, ActionListener
 
         view = new GameView(state);
 
-        state.addGameObject(new StartMenu(state, 200, 250, 200, 300));
+        state.addGameObject(new StartMenu(state, 200, 250, 100, 200));
 
         timer = new Timer(17, this);
         timer.start();

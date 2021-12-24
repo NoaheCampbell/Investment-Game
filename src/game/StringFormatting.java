@@ -77,8 +77,9 @@ public class StringFormatting
     /**
      * Sets the x and y location of the String object to be in the center of the object.
      */
-    public Point centerString()
+    public Point centerStringInObject(Graphics g)
     {
+        offset = getOffset(g);
         return new Point(x + (width / 2) - offset, (y + height / 2));
     }
 

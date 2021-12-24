@@ -4,13 +4,10 @@ import java.awt.*;
 
 public class MainMenu extends Menu implements OnScreen
 {
-    private StringFormatting title;
 
     public MainMenu(GameState state, int x, int y, int height, int width)
     {
         super(state, x, y, height, width);
-        title = new StringFormatting(x, y, width, height, "Redo");
-
     }
 
     public void update()
@@ -22,18 +19,56 @@ public class MainMenu extends Menu implements OnScreen
           (state.getMouseLocation().x <= (this.x + getWidth()) && state.getMouseLocation().y <= (this.y + getHeight())))
         {
             state.changeIsGameStarted(false);
-            state.addGameObject(new StartMenu(state, x, y + 200, height, width));
+            state.addGameObject(new StartMenu(state, x, y, height, width));
             state.removeGameObject(this);
         }
     }
 
     public void draw(Graphics g)
     {
-        title.changeOffset(title.getOffset(g));
-        g.setColor(Color.BLACK);
-        g.fillRect(x, y, width, height);
-        g.setColor(Color.WHITE);
-        g.drawString(title.getContents(), title.centerString().x, title.centerString().y);
+        drawTitle(g, 200, 0, "Main Menu", Color.BLACK);
+        drawShape(g, "rectangle", x, y, width, height, Color.BLACK);
+        drawTitle(g, x, y, "Redo", Color.WHITE);
+    }
+
+    /**
+     * Creates a String and draws it to the screen based off of the parameters.
+     * 
+     * @param Graphics g
+     * @param int x
+     * @param int y
+     * @param String contents
+     * @param Color color
+     */
+    public void drawTitle(Graphics g, int x, int y, String contents, Color color)
+    {
+        StringFormatting title = new StringFormatting(x, y, width, height, contents);
+        g.setColor(color);
+        g.drawString(contents, title.centerStringInObject(g).x, title.centerStringInObject(g).y);
+    }
+
+    /**
+     * Draws a shape to the screen based off of the parameters.
+     * 
+     * @param Graphics g
+     * @param String shape
+     * @param int x
+     * @param int y
+     * @param int width
+     * @param int height
+     * @param Color color
+     */
+    public void drawShape(Graphics g, String shape, int x, int y, int width, int height, Color color)
+    {
+        g.setColor(color);
+        if(shape.equals("rectangle"))
+        {
+            g.fillRect(x, y, width, height);
+        }
+        else if(shape.equals("circle"))
+        {
+            g.fillOval(x, y, width, height);
+        }
     }
 
     /**

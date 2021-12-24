@@ -23,18 +23,17 @@ public class StartMenu extends Menu implements OnScreen
                 (state.getMouseLocation().x <= (this.x + getWidth()) && state.getMouseLocation().y <= (this.y + getHeight())))
         {
             state.changeIsGameStarted(true);
-            state.addGameObject(new MainMenu(state, x, y - 200, height, width));
+            state.addGameObject(new MainMenu(state, x, y, height, width));
             state.removeGameObject(this);
         }
     }
 
     public void draw(Graphics g)
     {
-        title.changeOffset(title.getOffset(g));
         g.setColor(Color.BLACK);
         g.fillRect(x, y, width, height);
         g.setColor(Color.WHITE);
-        g.drawString(title.getContents(), title.centerString().x, title.centerString().y);
+        g.drawString(title.getContents(), title.centerStringInObject(g).x, title.centerStringInObject(g).y);
     }
 
     /**
