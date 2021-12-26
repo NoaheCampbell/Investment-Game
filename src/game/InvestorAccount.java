@@ -9,46 +9,16 @@ import java.awt.*;
 
 public class InvestorAccount extends Account
 {
-    private GameState state;
     private double balance;
     private double interestRate;
     private double interest;
     private double interestEarned;
 
-    public InvestorAccount(GameState state, double balance, double interestRate)
+    public InvestorAccount(GameState state, double balance, double interestRate, double interest, 
+                           double interestEarned, double lastDeposit, double lastWithdrawal, double totalAmountDeposited,
+                           double totalAmountWithdrawn)
     {
-        this.state = state;
-        this.balance = balance;
-        this.interestRate = interestRate;
-    }
-
-    /**
-     * This method adds the amount specified in the parameter to the balance of the investor's account.
-     * @param amount
-     */
-    public void deposit(double amount)
-    {
-        balance += amount;
-    }
-
-    /**
-     * This method is used to take the amount specified in the parameter and subtract it from
-     * the balance of the investor's
-     * @param amount
-     */
-    public void withdraw(double amount)
-    {
-        balance -= amount;
-    }
-
-    /**
-     * Returns the player's balance
-     * @return balance
-     */
-    public double getBalance()
-    {
-        balance = (double) Math.round(balance * 100) / 100;
-        return balance;
+        super(state, balance, lastDeposit, lastWithdrawal, totalAmountDeposited, totalAmountWithdrawn);
     }
 
     /**
@@ -67,15 +37,6 @@ public class InvestorAccount extends Account
     public double getInterestEarned()
     {
         return interestEarned;
-    }
-
-    /**
-     * Changes the current balance to match the amount in the input
-     * @param balance
-     */
-    public void setBalance(double balance)
-    {
-        this.balance = balance;
     }
 
     /**

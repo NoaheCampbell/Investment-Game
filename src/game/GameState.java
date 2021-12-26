@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.*;
+import java.sql.Savepoint;
 import java.util.ArrayList;
 
 public class GameState
@@ -14,6 +15,8 @@ public class GameState
     private boolean gameStarted;
     private boolean gameOver;
     private InvestorAccount investorAccount;
+    private CheckingAccount checkingAccount;
+    private SavingsAccount savingsAccount;
 
     public GameState()
     {
@@ -24,6 +27,8 @@ public class GameState
         gameStarted = false;
         gameOver = false;
         investorAccount = null;
+        checkingAccount = null;
+        savingsAccount = null;
     }
 
     /**
@@ -157,4 +162,24 @@ public class GameState
    {
        return investorAccount;
    }
+
+    public void setCheckingAccount(CheckingAccount checkingAccount)
+    {
+        this.checkingAccount = checkingAccount;
+    }
+
+    public CheckingAccount getCheckingAccount() 
+    {
+        return checkingAccount;
+    }
+
+    public SavingsAccount getSavingsAccount()
+    {
+        return savingsAccount;
+    }
+
+    public void setSavingsAccount(SavingsAccount savingsAccount)
+    {
+        this.savingsAccount = savingsAccount;
+    }
 }

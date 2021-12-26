@@ -5,11 +5,15 @@ public class MainMenu extends Menu implements OnScreen
 
     private StringFormatting redo;
     private InvestorAccount investorAccount;
+    private CheckingAccount checkingAccount;
+    private SavingsAccount savingsAccount;
 
     public MainMenu(GameState state, int x, int y, int height, int width)
     {
         super(state, x, y, height, width);
         investorAccount = state.getInvestorAccount();
+        checkingAccount = state.getCheckingAccount();
+        savingsAccount = state.getSavingsAccount();
     }
 
     public void update()
@@ -24,7 +28,8 @@ public class MainMenu extends Menu implements OnScreen
               (state.getMouseLocation().x <= (redo.getX() + redo.getWidth()) && 
               state.getMouseLocation().y <= (redo.getY() + redo.getHeight())))
             {
-            state.addGameObject(new StartMenu(state, x, y, height, width));
+            state.changeIsGameStarted(false);
+            state.addGameObject(new StartMenu(state, 200, 250, height, width));
             state.removeGameObject(this);
             }
             // Checks to see if the balance button was clicked.
@@ -32,7 +37,7 @@ public class MainMenu extends Menu implements OnScreen
                    (state.getMouseLocation().x <= 275 && state.getMouseLocation().y <= 200))
             {
                 // Adds the balance menu to the game state.
-                state.addGameObject(new BalanceMenu(state, 200, 0, height, width, investorAccount));
+                state.addGameObject(new BalanceMenu(state, 200, 0, height, width, investorAccount, checkingAccount, savingsAccount));
                 state.removeGameObject(this);
             }
             // Checks to see if the deposit button was clicked.
@@ -40,6 +45,7 @@ public class MainMenu extends Menu implements OnScreen
                    (state.getMouseLocation().x <= 275 && state.getMouseLocation().y <= 300))
             {
                 // Adds the deposit menu to the game state.
+                
                 state.addGameObject(new StartMenu(state, x, y, height, width));
                 state.removeGameObject(this);
             }
