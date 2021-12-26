@@ -15,7 +15,7 @@ public class MainMenu extends Menu implements OnScreen
         // Checks to see if the user clicked on the screen at a specific location, and if they did, it removes
         // that object that was clicked on, and then re-adds the start menu for the player.
         
-        if ((state.getMouseLocation().x >= redo.getX() && state.getMouseLocation().y >= redo.getY()) &&
+        if ( state.isMouseClicked() && (state.getMouseLocation().x >= redo.getX() && state.getMouseLocation().y >= redo.getY()) &&
           (state.getMouseLocation().x <= (redo.getX() + redo.getWidth()) && state.getMouseLocation().y <= (redo.getY() + redo.getHeight())))
         {
             state.changeIsGameStarted(false);
