@@ -66,6 +66,16 @@ public class StringFormatting
     }
 
     /**
+     * Sets the location of the object.
+     * @param String contents
+     */
+    public void setLocation(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    /**
      * Sets the contents of the String object.
      * @param String contents
      */
@@ -120,4 +130,8 @@ public class StringFormatting
         return g.getFontMetrics().stringWidth(contents) / 2;
     }
 
+    public void changeFontSize(Graphics g, int newFontSize)
+    {
+        g.setFont(g.getFont().deriveFont((float) newFontSize));
+    }
 }

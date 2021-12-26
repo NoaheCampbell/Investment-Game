@@ -9,14 +9,15 @@ import java.awt.*;
 
 public class InvestorAccount extends Account
 {
+    private GameState state;
     private double balance;
     private double interestRate;
     private double interest;
     private double interestEarned;
 
-    public InvestorAccount(double balance, double interestRate)
+    public InvestorAccount(GameState state, double balance, double interestRate)
     {
-        super();
+        this.state = state;
         this.balance = balance;
         this.interestRate = interestRate;
     }
@@ -46,6 +47,7 @@ public class InvestorAccount extends Account
      */
     public double getBalance()
     {
+        balance = (double) Math.round(balance * 100) / 100;
         return balance;
     }
 

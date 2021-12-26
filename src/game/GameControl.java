@@ -23,6 +23,9 @@ public class GameControl implements Runnable, ActionListener
 
         state.addGameObject(new StartMenu(state, 200, 250, 100, 200));
 
+        state.setInvestorAccount(new InvestorAccount(state, 0, 0));
+        state.addGameObject(state.getInvestorAccount());
+
         timer = new Timer(17, this);
         timer.start();
     }

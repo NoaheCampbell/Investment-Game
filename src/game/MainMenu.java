@@ -4,16 +4,18 @@ public class MainMenu extends Menu implements OnScreen
 {
 
     private StringFormatting redo;
+    private InvestorAccount investorAccount;
 
     public MainMenu(GameState state, int x, int y, int height, int width)
     {
         super(state, x, y, height, width);
+        investorAccount = state.getInvestorAccount();
     }
 
     public void update()
     {
         // Checks to see if the user clicked on the screen at a specific location, and if they did, it removes
-        // that object that was clicked on, and then re-adds the start menu for the player.
+        // that object that was clicked on, and then adds the specific menu to the screen.
         
         if(state.isMouseClicked())
         {
@@ -22,7 +24,6 @@ public class MainMenu extends Menu implements OnScreen
               (state.getMouseLocation().x <= (redo.getX() + redo.getWidth()) && 
               state.getMouseLocation().y <= (redo.getY() + redo.getHeight())))
             {
-            state.changeIsGameStarted(false);
             state.addGameObject(new StartMenu(state, x, y, height, width));
             state.removeGameObject(this);
             }
@@ -30,15 +31,15 @@ public class MainMenu extends Menu implements OnScreen
             else if((state.getMouseLocation().x >= 175 && state.getMouseLocation().y >= 150) && 
                    (state.getMouseLocation().x <= 275 && state.getMouseLocation().y <= 200))
             {
-                state.changeIsGameStarted(false);
-                state.addGameObject(new StartMenu(state, x, y, height, width));
+                // Adds the balance menu to the game state.
+                state.addGameObject(new BalanceMenu(state, 200, 0, height, width, investorAccount));
                 state.removeGameObject(this);
             }
             // Checks to see if the deposit button was clicked.
             else if((state.getMouseLocation().x >= 175 && state.getMouseLocation().y >= 250) && 
                    (state.getMouseLocation().x <= 275 && state.getMouseLocation().y <= 300))
             {
-                state.changeIsGameStarted(false);
+                // Adds the deposit menu to the game state.
                 state.addGameObject(new StartMenu(state, x, y, height, width));
                 state.removeGameObject(this);
             }
@@ -46,7 +47,7 @@ public class MainMenu extends Menu implements OnScreen
             else if((state.getMouseLocation().x >= 325 && state.getMouseLocation().y >= 150) && 
                    (state.getMouseLocation().x <= 425 && state.getMouseLocation().y <= 200))
             {
-                state.changeIsGameStarted(false);
+                // Adds the withdraw menu to the game state.
                 state.addGameObject(new StartMenu(state, x, y, height, width));
                 state.removeGameObject(this);
             }
@@ -54,7 +55,7 @@ public class MainMenu extends Menu implements OnScreen
             else if((state.getMouseLocation().x >= 325 && state.getMouseLocation().y >= 250) && 
                    (state.getMouseLocation().x <= 425 && state.getMouseLocation().y <= 300))
             {
-                state.changeIsGameStarted(false);
+                // Adds the invest menu to the game state.
                 state.addGameObject(new StartMenu(state, x, y, height, width));
                 state.removeGameObject(this);
             }
@@ -63,11 +64,11 @@ public class MainMenu extends Menu implements OnScreen
     public void draw(Graphics g)
     {
         //Draws redo button
-        redo = new StringFormatting(300, 500, 50, 25, "Redo");
+        redo = new StringFormatting(300, 500, 50, 25, "Go Back");
         g.setColor(Color.BLACK);
         g.fillRect(redo.getX(), redo.getY(), redo.getWidth(), redo.getHeight());
         g.setColor(Color.WHITE);
-        g.drawString("Redo", redo.centerStringInObject(g).x, redo.centerStringInObject(g).y);
+        g.drawString(redo.getContents(), redo.centerStringInObject(g).x, redo.centerStringInObject(g).y);
 
         //Draws the Menu title.
         drawTitle(g, 200, 0, "Main Menu", Color.BLACK);
@@ -87,44 +88,6 @@ public class MainMenu extends Menu implements OnScreen
 
     }
 
-    /**
-     * Creates a String and draws it to the screen based off of the parameters.
-     * 
-     * @param Graphics g
-     * @param int x
-     * @param int y
-     * @param String contents
-     * @param Color color
-     */
-    public void drawTitle(Graphics g, int x, int y, String contents, Color color)
-    {
-        StringFormatting title = new StringFormatting(x, y, width, height, contents);
-        g.setColor(color);
-        g.drawString(contents, title.centerStringInObject(g).x, title.centerStringInObject(g).y);
-    }
-    /**
-     * Draws a shape to the screen based off of the parameters.
-     * 
-     * @param Graphics g
-     * @param String shape
-     * @param int x
-     * @param int y
-     * @param int width
-     * @param int height
-     * @param Color color
-     */
-    public void drawShape(Graphics g, String shape, int x, int y, int width, int height, Color color)
-    {
-        g.setColor(color);
-        if(shape.equals("rectangle"))
-        {
-            g.fillRect(x, y, width, height);
-        }
-        else if(shape.equals("circle"))
-        {
-            g.fillOval(x, y, width, height);
-        }
-    }
     /**
      * Returns the location of the object in Point form in the MainMenu class.
      */

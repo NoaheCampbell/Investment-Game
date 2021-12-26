@@ -13,6 +13,7 @@ public class GameState
     private boolean mouseClicked;
     private boolean gameStarted;
     private boolean gameOver;
+    private InvestorAccount investorAccount;
 
     public GameState()
     {
@@ -22,6 +23,7 @@ public class GameState
         mouseClicked = false;
         gameStarted = false;
         gameOver = false;
+        investorAccount = null;
     }
 
     /**
@@ -146,4 +148,13 @@ public class GameState
        gameOver = newGameOver;
    }
 
+   public void setInvestorAccount(InvestorAccount investorAccount)
+   {
+       this.investorAccount = investorAccount;
+   }
+
+   public InvestorAccount getInvestorAccount()
+   {
+       return investorAccount;
+   }
 }
