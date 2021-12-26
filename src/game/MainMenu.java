@@ -15,12 +15,49 @@ public class MainMenu extends Menu implements OnScreen
         // Checks to see if the user clicked on the screen at a specific location, and if they did, it removes
         // that object that was clicked on, and then re-adds the start menu for the player.
         
-        if ( state.isMouseClicked() && (state.getMouseLocation().x >= redo.getX() && state.getMouseLocation().y >= redo.getY()) &&
-          (state.getMouseLocation().x <= (redo.getX() + redo.getWidth()) && state.getMouseLocation().y <= (redo.getY() + redo.getHeight())))
+        if(state.isMouseClicked())
         {
+            // Checks tp see if the redo button was clicked.
+            if((state.getMouseLocation().x >= redo.getX() && state.getMouseLocation().y >= redo.getY()) &&
+              (state.getMouseLocation().x <= (redo.getX() + redo.getWidth()) && 
+              state.getMouseLocation().y <= (redo.getY() + redo.getHeight())))
+            {
             state.changeIsGameStarted(false);
             state.addGameObject(new StartMenu(state, x, y, height, width));
             state.removeGameObject(this);
+            }
+            // Checks to see if the balance button was clicked.
+            else if((state.getMouseLocation().x >= 175 && state.getMouseLocation().y >= 150) && 
+                   (state.getMouseLocation().x <= 275 && state.getMouseLocation().y <= 200))
+            {
+                state.changeIsGameStarted(false);
+                state.addGameObject(new StartMenu(state, x, y, height, width));
+                state.removeGameObject(this);
+            }
+            // Checks to see if the deposit button was clicked.
+            else if((state.getMouseLocation().x >= 175 && state.getMouseLocation().y >= 250) && 
+                   (state.getMouseLocation().x <= 275 && state.getMouseLocation().y <= 300))
+            {
+                state.changeIsGameStarted(false);
+                state.addGameObject(new StartMenu(state, x, y, height, width));
+                state.removeGameObject(this);
+            }
+            //Checks to see if the withdraw button was clicked.
+            else if((state.getMouseLocation().x >= 325 && state.getMouseLocation().y >= 150) && 
+                   (state.getMouseLocation().x <= 425 && state.getMouseLocation().y <= 200))
+            {
+                state.changeIsGameStarted(false);
+                state.addGameObject(new StartMenu(state, x, y, height, width));
+                state.removeGameObject(this);
+            }
+            //Checks to see if the invest button was clicked
+            else if((state.getMouseLocation().x >= 325 && state.getMouseLocation().y >= 250) && 
+                   (state.getMouseLocation().x <= 425 && state.getMouseLocation().y <= 300))
+            {
+                state.changeIsGameStarted(false);
+                state.addGameObject(new StartMenu(state, x, y, height, width));
+                state.removeGameObject(this);
+            }
         }
     }
     public void draw(Graphics g)
