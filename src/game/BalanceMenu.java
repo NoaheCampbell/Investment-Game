@@ -10,7 +10,6 @@ public class BalanceMenu extends Menu implements OnScreen
     private InvestorAccount investorAccount;
     private CheckingAccount checkingAccount;
     private SavingsAccount savingsAccount;
-    private StringFormatting redo;
 
     public BalanceMenu(GameState state, int x, int y, int height, int width, InvestorAccount investorAccount, 
                        CheckingAccount checkingAccount, SavingsAccount savingsAccount)
@@ -64,11 +63,7 @@ public class BalanceMenu extends Menu implements OnScreen
         drawTitle(g, title.centerStringInObject(g).x - 20, title.centerStringInObject(g).y, title.getContents(), Color.WHITE);
 
         // Draws the redo button.
-        redo = new StringFormatting(300, 500, 50, 25, "Go Back");
-        g.setColor(Color.BLACK);
-        g.fillRect(redo.getX(), redo.getY(), redo.getWidth(), redo.getHeight());
-        g.setColor(Color.WHITE);
-        g.drawString(redo.getContents(), redo.centerStringInObject(g).x, redo.centerStringInObject(g).y);
+        drawRedoButton(g);
 
 
     }

@@ -3,7 +3,6 @@ import java.awt.*;
 public class MainMenu extends Menu implements OnScreen
 {
 
-    private StringFormatting redo;
     private InvestorAccount investorAccount;
     private CheckingAccount checkingAccount;
     private SavingsAccount savingsAccount;
@@ -45,7 +44,7 @@ public class MainMenu extends Menu implements OnScreen
                    (state.getMouseLocation().x <= 275 && state.getMouseLocation().y <= 300))
             {
                 // Adds the deposit menu to the game state.
-                
+
                 state.addGameObject(new StartMenu(state, x, y, height, width));
                 state.removeGameObject(this);
             }
@@ -69,13 +68,9 @@ public class MainMenu extends Menu implements OnScreen
     }
     public void draw(Graphics g)
     {
-        //Draws redo button
-        redo = new StringFormatting(300, 500, 50, 25, "Go Back");
-        g.setColor(Color.BLACK);
-        g.fillRect(redo.getX(), redo.getY(), redo.getWidth(), redo.getHeight());
-        g.setColor(Color.WHITE);
-        g.drawString(redo.getContents(), redo.centerStringInObject(g).x, redo.centerStringInObject(g).y);
-
+        // Draws the redo button.
+        drawRedoButton(g);
+        
         //Draws the Menu title.
         drawTitle(g, 200, 0, "Main Menu", Color.BLACK);
 

@@ -9,6 +9,7 @@ abstract public class Menu
 protected GameState state;
 protected int x, y;
 protected int height, width;
+protected StringFormatting redo;
 
 public Menu(GameState state, int x, int y, int height, int width)
 {
@@ -17,6 +18,7 @@ public Menu(GameState state, int x, int y, int height, int width)
     this.y = y;
     this.height = height;
     this.width = width;
+    this.redo = new StringFormatting(275, 500, 50, 25, "Redo");
 }
 
     abstract public Point getLocation();
@@ -69,5 +71,12 @@ public Menu(GameState state, int x, int y, int height, int width)
         {
             g.fillOval(x, y, width, height);
         }
+    }
+
+    public void drawRedoButton(Graphics g)
+    {
+        drawShape(g, "rectangle", redo.getX(), redo.getY(), redo.getWidth(), redo.getHeight(), Color.BLACK);
+        drawTitle(g, redo.centerStringInObject(g).x - 85, redo.centerStringInObject(g).y - 45, redo.getContents(), Color.WHITE);
+        
     }
 }
