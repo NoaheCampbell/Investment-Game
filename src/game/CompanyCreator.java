@@ -34,11 +34,6 @@ public class CompanyCreator
         this.setName(name);
     }
 
-    /**
-     * Generates a random company name for this instance of the CompanyCreator class if none is specified
-     * 
-     * @return String names[randomIndex]
-     */
     public String generateRandomName()
     {
         String[] names = {"Apple", "Microsoft", "Google", "Amazon", "Facebook", "Netflix", "Tesla", "SpaceX", "Nvidia", "Intel", "IBM", "Oracle", "Microsoft", "Amazon", "Facebook", "Netflix", "Tesla", "SpaceX", "Nvidia", "Intel", "IBM", "Oracle"};
@@ -46,13 +41,6 @@ public class CompanyCreator
         return names[randomIndex];
     }
 
-    /**
-     * Generates and returns a random integer using the min and max values provided in the parameters
-     * 
-     * @param int min
-     * @param int max
-     * @return int 
-     */
     private int generateRandomInt(int min, int max)
     {
         return (int) (Math.random() * (max - min) + min);
@@ -141,9 +129,6 @@ public class CompanyCreator
         spending = generateRandomInt(1, 100);
     }
 
-    /**
-     * Generates random values for each field between 1 and 100
-     */
     public void setRandomValues()
     {
         generateRandomSuccessChance();
@@ -154,9 +139,6 @@ public class CompanyCreator
         generateRandomSpending();
     }
 
-    /**
-     * Prints all values for the fields to the screen
-     */
     public void printValues()
     {
     	System.out.println("Success Chance: " + successChance);

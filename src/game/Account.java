@@ -4,7 +4,7 @@ abstract public class Account implements OnScreen
 {
     protected double balance;
     protected double lastDeposit;
-    protected double lastWithdrawal;
+    protected double lasWithdrawal;
     protected double totalAmountDeposited;
     protected double totalAmountWithdrawn;
 
@@ -25,7 +25,7 @@ abstract public class Account implements OnScreen
 
     public double getLastWithdrawal()
     {
-        return lastWithdrawal;
+        return lasWithdrawal;
     }
 
     public double getTotalAmountDeposited()
@@ -48,7 +48,7 @@ abstract public class Account implements OnScreen
     public void withdraw(double amount)
     {
         balance -= amount;
-        lastWithdrawal = amount;
+        lasWithdrawal = amount;
         totalAmountWithdrawn += amount;
     }
 
