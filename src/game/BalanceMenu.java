@@ -42,9 +42,11 @@ public class BalanceMenu extends Menu implements OnScreen
         title = new StringFormatting(x, y, 100, 50, null);
 
         // Draws the main title for the scene.
+        title.changeFontSize(g, 25);
         drawTitle(g, x, y, "Balance Options", Color.BLACK);
 
         // Draws the balance from the Investor Account
+        title.resetFontSize(g);
         title.setContents("Investor Account Balance: " + investorAccount.getBalance());
         title.setLocation(110, 125);
         drawShape(g, "rectangle", 25, 160, width + 50, height - 20, Color.BLACK);

@@ -23,17 +23,28 @@ public class StartMenu extends Menu implements OnScreen
                 (state.getMouseLocation().x <= (this.x + getWidth()) && state.getMouseLocation().y <= (this.y + getHeight())))
         {
             state.changeIsGameStarted(true);
-            state.addGameObject(new MainMenu(state, x, y, height, width));
+            state.addGameObject(new MainMenu(state, 200, 250, 100, 200));
             state.removeGameObject(this);
         }
     }
 
     public void draw(Graphics g)
     {
+        // Draws the start button.
         g.setColor(Color.BLACK);
-        g.fillRect(x, y, width, height);
+        g.fillRect(225, 450, 125, 75);
         g.setColor(Color.WHITE);
-        g.drawString(title.getContents(), title.centerStringInObject(g).x, title.centerStringInObject(g).y);
+        title.changeFontSize(g, 15);
+        g.drawString("Start", 270, 490);
+
+        // Draws a welcome message and instructions to the screen.
+        title.changeFontSize(g, 20);
+        drawTitle(g, 200, 100, "Welcome to my investment game!", Color.BLACK);
+        drawTitle(g, 200, 150, "The goal is to maximize profits", Color.BLACK);
+        drawTitle(g, 200, 200, "by any means necessary", Color.BLACK);
+        drawTitle(g, 200, 250, "Click on the screen to proceed", Color.BLACK);
+        drawTitle(g, 200, 300, "and best of luck on your journey", Color.BLACK);
+        title.resetFontSize(g);
     }
 
     /**

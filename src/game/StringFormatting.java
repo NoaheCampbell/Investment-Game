@@ -134,4 +134,9 @@ public class StringFormatting
     {
         g.setFont(g.getFont().deriveFont((float) newFontSize));
     }
+
+    public void resetFontSize(Graphics g)
+    {
+        g.setFont(g.getFont().deriveFont((float) 12));
+    }
 }

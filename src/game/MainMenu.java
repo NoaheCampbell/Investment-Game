@@ -6,6 +6,7 @@ public class MainMenu extends Menu implements OnScreen
     private InvestorAccount investorAccount;
     private CheckingAccount checkingAccount;
     private SavingsAccount savingsAccount;
+    private StringFormatting fontSize;
 
     public MainMenu(GameState state, int x, int y, int height, int width)
     {
@@ -13,6 +14,7 @@ public class MainMenu extends Menu implements OnScreen
         investorAccount = state.getInvestorAccount();
         checkingAccount = state.getCheckingAccount();
         savingsAccount = state.getSavingsAccount();
+        fontSize = new StringFormatting(x, y, 100, 50, null);
     }
 
     public void update()
@@ -28,7 +30,7 @@ public class MainMenu extends Menu implements OnScreen
               state.getMouseLocation().y <= (redo.getY() + redo.getHeight())))
             {
             state.changeIsGameStarted(false);
-            state.addGameObject(new StartMenu(state, 200, 250, height, width));
+            state.addGameObject(new StartMenu(state, 225, 450, 75, 150));
             state.removeGameObject(this);
             }
             // Checks to see if the balance button was clicked.
@@ -72,9 +74,11 @@ public class MainMenu extends Menu implements OnScreen
         drawRedoButton(g);
         
         //Draws the Menu title.
+        fontSize.changeFontSize(g, 25);
         drawTitle(g, 200, 0, "Main Menu", Color.BLACK);
 
         //Draws the Menu options.
+        fontSize.resetFontSize(g);
         drawShape(g, "rectangle", 175, 150, 100, 50, Color.BLACK);
         drawTitle(g, 125, 130, "Balance", Color.WHITE);
 
